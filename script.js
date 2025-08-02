@@ -1,7 +1,7 @@
 let queue = []
 function calculator(){
     const symbol = this.dataset.sym;
-    console.log(symbol)
+    // console.log(symbol)
     if(symbol == '='){
         var res = 0;
         const first_ele = queue.shift()
@@ -17,7 +17,7 @@ function calculator(){
             const ele = queue.shift()
             if(queue.length != 0){
                 let next_ele = queue.shift()
-                console.log(queue+" : "+ele)
+                // console.log(queue+" : "+ele)
                 // console.log(next_ele)
                 if(("+-*/".includes(ele) && "+-*/".includes(next_ele))){
                     queue = []
@@ -27,13 +27,13 @@ function calculator(){
                     return;
                 }
                 next_ele = parseInt(next_ele)
-                console.log("next : "+next_ele)
+                // console.log("next : "+next_ele)
                 while(queue.length != 0 && !("+-*/".includes(queue[0]))){
                     const num = queue.shift()
                     next_ele = next_ele*10 + parseInt(num);
-                    console.log(next_ele+" ")
+                    // console.log(next_ele+" ")
                 }
-                console.log("nextt : "+next_ele+" res :"+res)
+                // console.log("nextt : "+next_ele+" res :"+res)
                 if(ele == '+'){
                     res = Number(res) + Number(next_ele)
                 }else if(ele== '-'){
@@ -45,14 +45,14 @@ function calculator(){
                 }else{
 
                 }
-                console.log(res+" "+queue)
+                // console.log(res+" "+queue)
             }
-            console.log(res+" "+queue)
+            // console.log(res+" "+queue)
         }
         if(!error){
             const result = document.getElementById('result')
             result.innerHTML = `${res.toString()}`
-            console.log("Success")
+            // console.log("Success")
         }
         return;
     }else if(symbol == 'AC'){
@@ -64,7 +64,7 @@ function calculator(){
         queue.push(symbol)
     }
     const result = document.getElementById('result')
-    console.log(queue)
+    // console.log(queue)
     result.innerHTML = `<p>${queue.join('')}<p>`
 }
 
